@@ -1,18 +1,22 @@
 import React from 'react';
-import './header.scss';
 import NavbarLogo from '../../assets/images/logo.png';
+import styles from './index.module.scss'
+import { UserIcon } from "../../assets/icons";
 
 type Props = {}
 
 const Header = (props: Props) => {
     return (
-        <div className="header_container">
-            <div className="left">
+        <div className={styles.header}>
+            <div className={styles.left}>
                 <img src={NavbarLogo} alt='logo' />
             </div>
-            <div className="right">
-                <a className="player" href="#"> Player </a>
+            <div className={styles.right}>
+                <p > Player </p>
+                <div className={styles.logOut}>
+                <UserIcon />
                 <a href="#">Log out</a>
+                </div>
             </div>
         </div>
     )

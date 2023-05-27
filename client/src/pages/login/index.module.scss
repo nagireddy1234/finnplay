@@ -3,8 +3,13 @@
 .container {
     @include flex(center, center);
     height: 100%;
-
     .formContainer {
         width: 412px;
+        .imgContainer {
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
     }
 }

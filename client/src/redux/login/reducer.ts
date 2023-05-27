@@ -1,10 +1,17 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { loginContainer } from '../../interfaces/redux/login'
+import { ILogin } from '../../interfaces/redux/login'
+import { setLoading } from "./actions"
 
-const initialState: loginContainer = {
+const initialState: ILogin = {
     isAuthenticated: false,
+    isLoading:false,
 }
 
-const gamesReducer = createReducer(initialState, games => {})
+const loginReducer = createReducer(initialState, games => {
+    
+    games.addCase(setLoading, (state, { payload }) => {
+        state.isLoading = payload
+    })
+})
 
-export default gamesReducer
+export default loginReducer

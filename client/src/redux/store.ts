@@ -1,7 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage'
 import { persistReducer, persistStore } from 'redux-persist'
-import storeReducer from './login/reducer'
+import { selectLoginReducer } from './login/selector';
+import { selectGameReducer } from './gameList/selector';
 
 const persistConfig = {
     key: 'root',
@@ -11,7 +12,8 @@ const persistConfig = {
 const persistedReducer = persistReducer(
     persistConfig,
     combineReducers({
-        storeReducer,
+        selectLoginReducer,
+        selectGameReducer,
     }),
 )
 

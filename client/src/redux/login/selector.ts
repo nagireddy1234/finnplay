@@ -2,11 +2,11 @@ import { createSelector } from '@reduxjs/toolkit'
 
 import { Selector } from 'react-redux'
 import { IAppState } from '../../interfaces/redux/appSate'
-import { StoreContainer } from '../../interfaces/redux/login'
+import { ILogin } from '../../interfaces/redux/login'
 
-export const selectStoreReducer: Selector<IAppState, StoreContainer> = games =>
-    games.gamesReducer
+export const selectLoginReducer: Selector<IAppState, ILogin> = games =>
+    games.loginReducer
 
-export const selectGamesList = createSelector(selectStoreReducer, data => ({
+export const selectLogin = createSelector(selectLoginReducer, data => ({
     ...data,
 }))

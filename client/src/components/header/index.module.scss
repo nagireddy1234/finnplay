@@ -1,0 +1,38 @@
+@import '../../theme/variables.scss';
+@import '../../theme/mixins';
+
+.header {
+    padding: 0 82px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $white;
+    box-shadow: 0px -2px 18px rgba(128, 128, 128, 0.1);
+    .left {
+        height: 70px;
+        width: 70px;
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    .right {
+        @include flex(center, center);
+        p {
+            @include font-style;
+            color: $text-black;
+        }
+        .logOut {
+            @include flex(center, center);
+            margin-left: 41px;
+            a {
+                @include font-style;
+                color: $text-red;
+                margin-left: 8px;
+                text-decoration: none;
+            }
+        }
+      
+    }
+}

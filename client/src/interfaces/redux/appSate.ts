@@ -1,5 +1,5 @@
-import { StoreContainer } from './login'
 
 export interface IAppState {
-    gamesReducer: any
+    gamesReducer: any,
+    loginReducer:any,
 }

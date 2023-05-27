@@ -1,3 +1,6 @@
-export interface loginContainer {
+
+export interface ILogin {
     isAuthenticated: boolean
+    isLoading:boolean
 }
+

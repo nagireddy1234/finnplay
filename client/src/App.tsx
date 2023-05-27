@@ -21,6 +21,7 @@ const App = () => {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Login />} />
+                        <Route path="/gamelist" element={<GameList />} />
                     </Routes>
                 </BrowserRouter>
             </Suspense>
