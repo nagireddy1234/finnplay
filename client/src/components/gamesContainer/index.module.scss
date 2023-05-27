@@ -1,14 +1,13 @@
 @import '../../theme/variables.scss';
 @import '../../theme/mixins';
 
-.mainContainer {
+.container {
     padding: 75px 82px 94px 82px;
-    @include flex(center, center);
-    gap: 10px;
-    // .imageContainer{
-
-    // };
-    // .filtersContainer{
-    //     padding: 32px;
-    // }
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    @include md{
+        padding: 24px;
+        flex-direction: column-reverse;
+    }
 }

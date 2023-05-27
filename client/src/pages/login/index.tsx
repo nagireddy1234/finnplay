@@ -6,6 +6,7 @@ import { useLogin } from './useLogin'
 import Logo from '../../assets/images/logo.png'
 import { useSelector } from "react-redux"
 import { selectGamesList } from "../../redux/login/selector"
+import { EyeIcon } from "../../assets/icons"
 
 const Login = () => {
 
@@ -13,6 +14,15 @@ const Login = () => {
     const {
         funcs: { setUserName, setPassword, handleuserLogin,userForm },
     } = useLogin()
+
+    const togglePassword = () => {
+        // if (type === 'password') {
+        //     type = 'text'
+        // } else {
+        //     type = 'password'
+        // }
+        console.log("typetype")
+    }
 
     return (
         <div className={styles.container}>
@@ -26,6 +36,7 @@ const Login = () => {
                     type="password"
                     onChange={setPassword}
                     value={userForm.password}
+                    icon ={<EyeIcon style={{ cursor: 'pointer' }} onClick={togglePassword} />}
                 />
                 <Button onClick={handleuserLogin} text="Login" />
             </div>

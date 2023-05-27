@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { fetchGames, setLoading, userLogin } from '../../redux/login/actions'
+import { setLoading, userLogin } from '../../redux/login/actions'
 import { AppDispatch } from '../../redux/store'
 import { useNavigate } from 'react-router-dom'
+import { fetchGames } from "../../redux/gameList/actions"
 
 export const useLogin = () => {
     const navigate = useNavigate()

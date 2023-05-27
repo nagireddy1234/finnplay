@@ -1,10 +1,10 @@
 export interface IGameList {
-    games: Game[]
-    providers: Provider[]
-    groups: Group[]
+    games: IGame[]
+    providers: IProvider[]
+    groups: IGroup[]
   }
   
-  export interface Game {
+  export interface IGame {
     id: number
     name: string
     provider: number
@@ -13,15 +13,20 @@ export interface IGameList {
     date: string
   }
   
-  export interface Provider {
+  export interface IProvider {
     id: number
     name: string
     logo: string
   }
   
-  export interface Group {
+  export interface IGroup {
     id: number
     name: string
     games: number[]
+  }
+
+  export interface ISortingData{
+    id: number
+    name: string
   }
   

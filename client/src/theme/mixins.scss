@@ -7,13 +7,14 @@
 @mixin font-style {
     font-style: normal;
     font-weight: 400;
-    font-family: $font-Prompt;
+    font-family: $font-Prompt;  
+    font-size: 16px
 }
 
 // Responsive
 
-@mixin lg {
-    @media (max-width: #{$screen-lg-max}) {
+@mixin md {
+    @media (max-width: #{$screen-md-max}) {
         @content;
     }
 }

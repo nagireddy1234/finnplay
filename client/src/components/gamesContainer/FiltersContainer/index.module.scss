@@ -1,0 +1,82 @@
+@import '../../../theme/mixins.scss';
+@import '../../../theme/variables.scss';
+
+.container {
+    padding: 32px;
+    max-width: 412px;
+    width:33%;
+    border: 1px solid $bleachedSilk;
+    border-radius: 8px;
+    background: $white;
+    height: fit-content;
+    .filtersContainer{
+        display: none;      
+        p{
+            @include font-style;
+            margin-left: 8px;
+            color: $text-blue;
+
+        }
+        @include md{
+            @include flex(center,center);
+            cursor: pointer;
+        }
+        
+    }
+    .buttonListContainer {
+        padding-top: 22px;
+    }
+    .columnsContainer {
+        margin-bottom: 32px;
+        p {
+            @include font-style;
+            color: $black-semi;
+            margin-bottom: 10px;
+        }
+        .dotContainer {
+            @include flex(center, space-between);
+            position: relative;
+            .dot {
+                @include flex(center, center);
+                @include font-style;
+                color: $text-black;
+                height: 24px;
+                width: 24px;
+                border-radius: 50%;
+                background-color: $yellow;
+                z-index: 10;
+                cursor: pointer;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                height: 15px;
+                left: 20px;
+                right:20px;
+                background-color: $yellow;
+            }
+        }
+    }
+    .resetContainer {
+        @include flex(center, space-between);
+        p {
+            @include font-style;
+            color: $black-semi;
+        }
+        button {
+            @include font-style;
+            box-shadow: 0px -2px 18px rgba(128, 128, 128, 0.1);
+            border-radius: 4px;
+            padding: 11px 32px;
+            color: $black-semi;
+            border: none;
+            background-color: $white;
+            cursor: pointer;
+        }
+    }
+
+    @include md{
+        // width:100%;
+        padding:24px;
+    }
+}

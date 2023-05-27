@@ -1,16 +1,20 @@
 import React from 'react'
-import { useSelector } from "react-redux"
-import { selectGamesList } from "../../../redux/login/selector"
+import { IGame } from "../../../interfaces/redux/data"
+import styles from './index.module.scss'
 
-type Props = {}
+interface IImageList {
+  games: IGame[]
+}
 
-const ImageList = (props: Props) => {
-
-  const data = useSelector(selectGamesList)
-  console.log(data,"dddd")
+const ImageList = ({ games }: IImageList) => {
+console.log(games,'gamesfames')
   return (
-    <div>
-        
+    <div className={styles.container}>
+      {games && games.map(game => {
+        return <div key={game.id} className={styles.image}>
+          <img src={game.coverLarge} alt={game.name} />
+        </div>
+      })}
     </div>
   )
 }

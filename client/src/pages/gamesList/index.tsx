@@ -7,7 +7,7 @@ type Props = {}
 
 const GameList = (props: Props) => {
   return (
-    <div className={styles.mainContainer} >
+    <div className={styles.container} >
     <Header />
     <GamesContainer />
     </div>

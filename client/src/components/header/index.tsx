@@ -7,7 +7,7 @@ type Props = {}
 
 const Header = (props: Props) => {
     return (
-        <div className={styles.header}>
+        <div className={styles.container}>
             <div className={styles.left}>
                 <img src={NavbarLogo} alt='logo' />
             </div>

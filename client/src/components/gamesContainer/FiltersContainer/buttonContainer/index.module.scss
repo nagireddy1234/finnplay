@@ -1,0 +1,28 @@
+@import '../../../../theme/mixins.scss';
+@import '../../../../theme/variables.scss';
+
+.container{
+    padding: 10px;
+    margin-bottom: 42px;;
+    p{
+        @include font-style;
+        color:$black-semi;
+        margin-bottom: 10px;
+    }
+    .buttonContainer{
+        @include flex(center, start);
+        gap:20px 24px;
+        flex-wrap: wrap;
+
+        button{
+            @include font-style;
+            color: $text-black;
+            border: none;
+            background-color: $white;
+            cursor: pointer;
+            flex-basis: 10%;
+            white-space: nowrap;
+        }
+
+    }
+}
