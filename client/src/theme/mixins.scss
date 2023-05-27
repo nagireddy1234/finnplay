@@ -1,0 +1,26 @@
+@mixin flex($alignItems, $justifyContent) {
+    display: flex;
+    align-items: $alignItems;
+    justify-content: $justifyContent;
+}
+
+@mixin font-style {
+    font-style: normal;
+    font-weight: 400;
+    font-family: $font-Prompt;
+    font-size: 1rem;
+}
+
+// Responsive
+
+@mixin lg {
+    @media (max-width: #{$screen-lg-max}) {
+        @content;
+    }
+}
+
+@mixin sm {
+    @media (max-width: #{$screen-sm-max}) {
+        @content;
+    }
+}

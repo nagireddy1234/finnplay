@@ -1,0 +1,10 @@
+@import '../../theme/mixins.scss';
+
+.container {
+    @include flex(center, center);
+    height: 100%;
+
+    .formContainer {
+        width: 412px;
+    }
+}

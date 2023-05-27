@@ -1,0 +1,11 @@
+@import '../../../theme/variables.scss';
+
+.button {
+    background-color: $bitcoin;
+    padding: 24px;
+    border: none;
+    box-shadow: 0px -2px 18px rgba(128, 128, 128, 0.1);
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+}
