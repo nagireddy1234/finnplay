@@ -5,7 +5,6 @@ import {
     IProvider,
     ISortingData,
 } from '../../../../interfaces/redux/data'
-import Button from '../../../common/button'
 
 interface IButtonList {
     data: IProvider[] | IGroup[] | ISortingData[]

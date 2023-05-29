@@ -8,12 +8,10 @@
     "bundle": "webpack",
     "start:client": "cd client && webpack-dev-server --mode development --open --hot --port 3000",
     "build": "webpack --mode production",
-    "lint": "eslint src/**/*.{js,jsx,ts,tsx,json}",
-    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "lint:fix": "npx eslint --fix .",
     "test": "jest --config ./jest.config.js",
     "start:server": "npx nodemon",
-    "start:build": "npm run build && node build/index.js"
+    "start:build": "cd client && webpack --mode production"
   },
   "repository": {
     "type": "git",

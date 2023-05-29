@@ -27,7 +27,7 @@ export const useLogin = () => {
         dispatch(setLoading(true))
         const { payload } = await dispatch(userLogin(userForm))
         if ((payload as any)?.status === 200) {
-            navigate('/gamelist')
+            navigate('/')
         }
         dispatch(setLoading(false))
     }

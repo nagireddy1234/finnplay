@@ -151,7 +151,6 @@ const gamesReducer = createReducer(initialState, games => {
                 }
             },
         )
-        console.log( state.filteredGames," state.filteredGames")
     })
 })
 

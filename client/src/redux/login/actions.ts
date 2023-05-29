@@ -22,4 +22,6 @@ export const userLogin = createAsyncThunk(
     },
 )
 
+export const userLogout = createAction('login/userLogout')
+
 export const setLoading = createAction<boolean>('login/setLoading')
