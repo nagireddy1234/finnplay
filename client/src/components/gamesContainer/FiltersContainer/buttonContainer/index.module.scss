@@ -3,7 +3,7 @@
 
 .container{
     padding: 10px;
-    margin-bottom: 42px;;
+    margin-bottom: 42px;
     p{
         @include font-style;
         color:$black-semi;
@@ -23,6 +23,8 @@
             flex-basis: 10%;
             white-space: nowrap;
         }
-
+    }
+    @include md{
+    margin-bottom: 16px;
     }
 }

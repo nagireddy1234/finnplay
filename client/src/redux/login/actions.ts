@@ -11,7 +11,11 @@ export const userLogin = createAsyncThunk(
     async (userData: UserData, { rejectWithValue }) => {
         try {
             const result = await API.post(apiEndpoints.login, userData)
-            return { status: result.status, message: result.data.message }
+            return {
+                status: result.status,
+                message: result.data.message,
+                userDetails: result.data.userDetails,
+            }
         } catch (e) {
             rejectWithValue(e)
         }

@@ -3,9 +3,7 @@ import Header from "../../components/header"
 import styles from './index.module.scss'
 import GamesContainer from "../../components/gamesContainer"
 
-type Props = {}
-
-const GameList = (props: Props) => {
+const GameList = () => {
   return (
     <div className={styles.container} >
     <Header />

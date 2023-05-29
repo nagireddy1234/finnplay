@@ -1,24 +1,42 @@
-import React from 'react'
-import styles from './index.module.scss';
-import ImageList from "./imageList";
-import FiltersContainer from "./FiltersContainer";
-import { useSelector } from "react-redux";
-import { selectGamesList } from "../../redux/gameList/selector";
+import React, { useEffect } from 'react'
+import { useDispatch , useSelector } from 'react-redux'
+import styles from './index.module.scss'
+import ImageList from './imageList'
+import FiltersContainer from './FiltersContainer'
 
-type Props = {}
+import { selectGamesListData } from '../../redux/gameList/selector'
+import { AppDispatch } from '../../redux/store'
+import { fetchGames } from '../../redux/gameList/actions'
 
 
+const GamesContainer = () => {
+    const dispatch = useDispatch<AppDispatch>()
 
-const GamesContainer = (props: Props) => {
-  const data = useSelector(selectGamesList)
-  console.log(data, "datatatat")
-  const { games, groups, providers } = data.data;
-  return (
-    <div className={styles.container}>
-      <ImageList {...{games}}/>
-      <FiltersContainer {...{groups, providers,games}} />
-    </div>
-  )
+    const {
+        data: { groups, providers },
+        showNumberOfColumns,
+        filteredGames,
+    } = useSelector(selectGamesListData)
+
+    console.log('filteredGames', filteredGames)
+
+    useEffect(() => {
+        dispatch(fetchGames())
+    }, [dispatch])
+
+    return (
+        <div className={styles.container}>
+            <ImageList
+                {...{
+                    games: filteredGames,
+                    showNumberOfColumns,
+                }}
+            />
+            <FiltersContainer
+                {...{ groups, providers, games: filteredGames }}
+            />
+        </div>
+    )
 }
 
 export default GamesContainer

@@ -4,27 +4,29 @@
 .container {
     padding: 32px;
     max-width: 412px;
-    width:33%;
+    width: 33%;
     border: 1px solid $bleachedSilk;
     border-radius: 8px;
     background: $white;
     height: fit-content;
-    .filtersContainer{
-        display: none;      
-        p{
+    .filtersContainer {
+        display: none;
+        p {
             @include font-style;
             margin-left: 8px;
             color: $text-blue;
-
         }
-        @include md{
-            @include flex(center,center);
+        @include md {
+            @include flex(center, center);
             cursor: pointer;
+            margin-top: 1.5rem;
         }
-        
     }
     .buttonListContainer {
         padding-top: 22px;
+        @include md {
+            padding-top: 0;
+        }
     }
     .columnsContainer {
         margin-bottom: 32px;
@@ -52,9 +54,12 @@
                 position: absolute;
                 height: 15px;
                 left: 20px;
-                right:20px;
+                right: 20px;
                 background-color: $yellow;
             }
+        }
+        @include md {
+           display: none
         }
     }
     .resetContainer {
@@ -75,8 +80,10 @@
         }
     }
 
-    @include md{
-        // width:100%;
-        padding:24px;
+    @include md {
+        width: calc(100% - 48px);
+        padding: 24px;
+        margin-bottom: 32px;
+        max-width: 100%;
     }
 }

@@ -1,14 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setLoading, userLogin } from '../../redux/login/actions'
 import { AppDispatch } from '../../redux/store'
 import { useNavigate } from 'react-router-dom'
-import { fetchGames } from "../../redux/gameList/actions"
 
 export const useLogin = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch<AppDispatch>()
     const [userForm, setUserForm] = useState({ userName: '', password: '' })
+
+    const [isShowPassword, setIsShowPassword] = useState(true)
+
+    const togglePassword = () => {
+        setIsShowPassword(!isShowPassword)
+    }
 
     const setUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUserForm({ ...userForm, userName: e.target.value })
@@ -17,10 +22,6 @@ export const useLogin = () => {
     const setPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUserForm({ ...userForm, password: e.target.value })
     }
-
-    useEffect(()=>{
-        dispatch(fetchGames())
-    },[dispatch])
 
     const handleuserLogin = async () => {
         dispatch(setLoading(true))
@@ -32,11 +33,15 @@ export const useLogin = () => {
     }
 
     return {
+        consts: {
+            userForm,
+            isShowPassword
+        },
         funcs: {
             setUserName,
             setPassword,
             handleuserLogin,
-            userForm
+            togglePassword,
         },
     }
 }

@@ -26,19 +26,21 @@
         .logOut {
             @include flex(center, center);
             margin-left: 41px;
-            a {
+            cursor: pointer;
+            button {
                 @include font-style;
                 color: $text-red;
                 margin-left: 8px;
-                text-decoration: none;
+                border: none;
+                background-color: $white;
+                cursor: pointer;
             }
-            @include md{
+            @include md {
                 margin-left: 24px;
             }
         }
-      
     }
-    @include md{
+    @include md {
         padding: 0 24px;
     }
 }

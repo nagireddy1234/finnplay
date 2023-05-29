@@ -45,7 +45,9 @@ app.post('/login', (request, response) => {
     if (isUserFound) {
         (request.session as any).profile = userDetails
         userSession[userDetails.userName] = request.session
-        response.status(200).send({ message: 'Player found successfully.' })
+        response
+            .status(200)
+            .send({ message: 'Player found successfully.', userDetails })
     } else {
         response.status(403).send({ message: 'Player not found.' })
     }

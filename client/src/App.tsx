@@ -1,15 +1,5 @@
-import React, { lazy, Suspense, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { AppDispatch } from './redux/store'
-import { selectGamesList } from './redux/login/selector'
-import { fetchGames } from './redux/login/actions'
-import { Helmet } from 'react-helmet'
-import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom'
-import {
-    getDataFromLocalStorage,
-    localStorageKeys,
-    saveDataInLocalStorage,
-} from './utils/localStorage'
+import React, { lazy, Suspense } from 'react'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
 const Login = lazy(() => import('./pages/login'))
 const GameList = lazy(() => import('./pages/gamesList'))
@@ -17,7 +7,7 @@ const GameList = lazy(() => import('./pages/gamesList'))
 const App = () => {
     return (
         <>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div style={{height:'100vh', width:'100%', display:'flex', alignItems:'center', justifyContent:'center'}}>Loading...</div>}>
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Login />} />
