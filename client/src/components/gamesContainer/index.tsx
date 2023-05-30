@@ -18,8 +18,6 @@ const GamesContainer = () => {
         filteredGames,
     } = useSelector(selectGamesListData)
 
-    console.log('filteredGames', filteredGames)
-
     useEffect(() => {
         dispatch(fetchGames())
     }, [dispatch])

@@ -16,7 +16,6 @@ export const fetchGames = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const result = await API.get(apiEndpoints.gamelist)
-            console.log(result.data, 'resultresult')
 
             return result.data
         } catch (e) {
@@ -24,3 +23,5 @@ export const fetchGames = createAsyncThunk(
         }
     },
 )
+
+export const resetGameFilters = createAction('gameList/resetGameFilters')

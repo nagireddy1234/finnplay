@@ -18,6 +18,7 @@ export const userLogin = createAsyncThunk(
             }
         } catch (e) {
             rejectWithValue(e)
+            window.alert('Enter correct credentials')
         }
     },
 )

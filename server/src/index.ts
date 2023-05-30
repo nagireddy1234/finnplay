@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express'
+import express from 'express'
 import cookieParser from 'cookie-parser'
 import sessions from 'express-session'
 import cors from 'cors'
@@ -57,7 +57,6 @@ app.post('/checkSession', (request, response) => {
     const { userName } = request.body
 
     if (userSession[userName]) {
-        const session = request.session
         const sessionExiredDate = userSession[userName].cookie._expires
 
         if (new Date() > new Date(sessionExiredDate)) {

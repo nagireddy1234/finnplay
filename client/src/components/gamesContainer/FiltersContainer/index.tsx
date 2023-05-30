@@ -22,12 +22,13 @@ const FiltersContainer = ({ groups, providers, games }: IFiltersContainer) => {
             selectedGroups,
         },
         funcs: {
+            handleReset,
             showFilters,
             handleShowNumberOfColumns,
             handleSearchGames,
             handleProviderSelection,
             handleGroupSelection,
-            handleSortingSelection
+            handleSortingSelection,
         },
     } = useHelper()
 
@@ -100,7 +101,7 @@ const FiltersContainer = ({ groups, providers, games }: IFiltersContainer) => {
                     <p>
                         Games amount: <span> {games.length} </span>
                     </p>
-                    <button>Reset</button>
+                    <button onClick={handleReset}>Reset</button>
                 </div>
             </div>
             {isShowFilters && (

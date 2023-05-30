@@ -27,8 +27,10 @@ const ButtonList = ({ data, label, onClick, nameList = [] }: IButtonList) => {
                                     backgroundColor: nameList.includes(
                                         item.name,
                                     )
-                                        ? 'blue'
+                                        ? 'lightgray'
                                         : 'white',
+                                    padding:'0.3rem',
+                                    borderRadius:'3px'
                                 }}
                                 onClick={() => onClick(item)}
                             >

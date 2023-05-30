@@ -4,11 +4,13 @@ import {
     filterGames,
     filterGroups,
     filterProvider,
+    resetGameFilters,
     setShowNumberOfColumns,
     setsortingGameValue,
 } from './actions'
 import { IGames } from '../../interfaces/redux/games'
 import { IGroup, IGame } from '../../interfaces/redux/data'
+import { setGroupAndProvider } from './util'
 
 const initialState: IGames = {
     data: {
@@ -38,6 +40,8 @@ const gamesReducer = createReducer(initialState, games => {
 
         state.data = { games: filteredGames, groups, providers }
         state.filteredGames = filteredGames
+        state.selectedProvider = []
+        state.selectedGroups = []
     })
 
     games.addCase(setShowNumberOfColumns, (state, { payload }) => {
@@ -45,8 +49,9 @@ const gamesReducer = createReducer(initialState, games => {
     })
 
     games.addCase(filterGames, (state, { payload }) => {
+        setGroupAndProvider(state)
         state.gameSearchValue = payload
-        state.filteredGames = state.data.games.filter(
+        state.filteredGames = state.filteredGames.filter(
             game =>
                 game.name
                     .toLocaleLowerCase()
@@ -65,35 +70,7 @@ const gamesReducer = createReducer(initialState, games => {
             state.selectedProvider.splice(index, 1)
         }
 
-        const gameIds: number[] = []
-        state.selectedGroups.forEach(item => gameIds.push(...item.games))
-
-        if (state.selectedProvider.length && state.selectedGroups.length) {
-            const selectedGamesByProvider = state.data.games.filter(game =>
-                state.selectedProvider
-                    .map(item => item.id)
-                    .includes(game.provider),
-            )
-
-            const selectedGamesByGroupsProvider =
-                selectedGamesByProvider.filter(game =>
-                    gameIds.includes(game.id),
-                )
-
-            state.filteredGames = selectedGamesByGroupsProvider
-        } else if (state.selectedProvider.length) {
-            state.filteredGames = state.data.games.filter(game =>
-                state.selectedProvider
-                    .map(item => item.id)
-                    .includes(game.provider),
-            )
-        } else if (state.selectedGroups.length) {
-            state.filteredGames = state.data.games.filter(game =>
-                gameIds.includes(game.id),
-            )
-        } else {
-            state.filteredGames = state.data.games
-        }
+        setGroupAndProvider(state)
     })
 
     games.addCase(filterGroups, (state, { payload }) => {
@@ -107,50 +84,33 @@ const gamesReducer = createReducer(initialState, games => {
             state.selectedGroups.splice(index, 1)
         }
 
-        const gameIds: number[] = []
-        state.selectedGroups.forEach(item => gameIds.push(...item.games))
-
-        if (state.selectedProvider.length && state.selectedGroups.length) {
-            const selectedGamesByProvider = state.data.games.filter(game =>
-                state.selectedProvider
-                    .map(item => item.id)
-                    .includes(game.provider),
-            )
-
-            const selectedGamesByGroupsProvider =
-                selectedGamesByProvider.filter(game =>
-                    gameIds.includes(game.id),
-                )
-
-            state.filteredGames = selectedGamesByGroupsProvider
-        } else if (state.selectedProvider.length) {
-            state.filteredGames = state.data.games.filter(game =>
-                state.selectedProvider
-                    .map(item => item.id)
-                    .includes(game.provider),
-            )
-        } else if (state.selectedGroups.length) {
-            state.filteredGames = state.data.games.filter(game =>
-                gameIds.includes(game.id),
-            )
-        } else {
-            state.filteredGames = state.data.games
-        }
+        setGroupAndProvider(state)
     })
 
     games.addCase(setsortingGameValue, (state, { payload }) => {
+        setGroupAndProvider(state)
         state.sortingGamesValue = payload
-        state.filteredGames = state.data.games.sort(
+        state.filteredGames = state.filteredGames.sort(
             (game1: IGame, game2: IGame) => {
                 if (payload.toLowerCase() === 'a-z') {
                     return game1.name.localeCompare(game2.name)
                 } else if (payload.toLowerCase() === 'z-a') {
                     return game2.name.localeCompare(game1.name)
                 } else if (payload.toLowerCase() === 'newest') {
-                    return Number(new Date(game2.date)) - Number(new Date(game1.date))
+                    return (
+                        Number(new Date(game2.date)) -
+                        Number(new Date(game1.date))
+                    )
                 }
             },
         )
+    })
+    games.addCase(resetGameFilters, state => {
+        state.filteredGames = state.data.games
+        state.selectedProvider = []
+        state.selectedGroups = []
+        state.gameSearchValue = ''
+        state.sortingGamesValue = ''
     })
 })
 

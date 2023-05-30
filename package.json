@@ -7,11 +7,10 @@
   "scripts": {
     "bundle": "webpack",
     "start:client": "cd client && webpack-dev-server --mode development --open --hot --port 3000",
-    "build": "webpack --mode production",
+    "build": "cd client && webpack --mode production",
     "lint:fix": "npx eslint --fix .",
     "test": "jest --config ./jest.config.js",
-    "start:server": "npx nodemon",
-    "start:build": "cd client && webpack --mode production"
+    "start:server": "npx nodemon"
   },
   "repository": {
     "type": "git",

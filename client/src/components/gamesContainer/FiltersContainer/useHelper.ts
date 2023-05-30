@@ -3,6 +3,7 @@ import {
     filterGames,
     filterGroups,
     filterProvider,
+    resetGameFilters,
     setShowNumberOfColumns,
     setsortingGameValue,
 } from '../../../redux/gameList/actions'
@@ -14,8 +15,12 @@ import { IGroup, IProvider } from '../../../interfaces/redux/data'
 export const useHelper = () => {
     const dispatch = useDispatch<AppDispatch>()
     const [isShowFilters, setIsShowFilters] = useState(true)
-    const { gameSearchValue, selectedProvider, selectedGroups, sortingGamesValue } =
-        useSelector(selectGamesListData)
+    const {
+        gameSearchValue,
+        selectedProvider,
+        selectedGroups,
+        sortingGamesValue,
+    } = useSelector(selectGamesListData)
 
     const showFilters = () => {
         setIsShowFilters(!isShowFilters)
@@ -44,8 +49,12 @@ export const useHelper = () => {
         dispatch(filterGroups(data))
     }
 
-    const handleSortingSelection = (value:string) =>{
+    const handleSortingSelection = (value: string) => {
         dispatch(setsortingGameValue(value))
+    }
+
+    const handleReset = () => {
+        dispatch(resetGameFilters())
     }
 
     return {
@@ -54,7 +63,7 @@ export const useHelper = () => {
             gameSearchValue,
             selectedProvider,
             selectedGroups,
-            sortingGamesValue
+            sortingGamesValue,
         },
         funcs: {
             showFilters,
@@ -62,7 +71,8 @@ export const useHelper = () => {
             handleSearchGames,
             handleProviderSelection,
             handleGroupSelection,
-            handleSortingSelection
+            handleSortingSelection,
+            handleReset,
         },
     }
 }
